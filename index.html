@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية عليكم بسنتي الجامعية</title>
+    <!-- Tailwind CSS for Modern UI/UX -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Premium Google Fonts (Reem Kufi & Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Reem+Kufi:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .brand-font {
+            font-family: 'Reem Kufi', serif;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen tracking-wide">
+
+    <!-- Announcement Bar -->
+    <div
+        class="bg-amber-600 text-white text-center py-2 px-4 text-xs md:text-sm font-semibold sticky top-0 z-50 shadow-sm">
+        <i class="fa-solid fa-bullhorn ml-2"></i>
+        <span>تنبيه: ينتهي التسجيل للفصل الدراسي الأول في 30 صفر. سارع بحجز مقعدك.</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="bg-white shadow-md sticky top-9 z-40">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-reverse space-x-3 cursor-pointer" onclick="navigateTo('home')">
+                <div class="bg-emerald-700 text-white p-2.5 rounded-lg shadow-md">
+                    <i class="fa-solid fa-book-open text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="brand-font text-2xl font-bold text-emerald-800 leading-tight">أكاديمية عليكم بسنتي
+                        الجامعية</h1>
+                    <p class="text-xs text-gray-500 font-medium">منارة العلم الشرعي في بيتك</p>
+                </div>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex space-x-reverse space-x-1 font-semibold text-sm text-gray-600">
+                <button onclick="navigateTo('home')"
+                    class="nav-link px-3 py-2 rounded-md hover:text-emerald-700 hover:bg-emerald-50 transition dynamic-active"
+                    id="nav-home">الرئيسية</button>
+                <button onclick="navigateTo('about')"
+                    class="nav-link px-3 py-2 rounded-md hover:text-emerald-700 hover:bg-emerald-50 transition"
+                    id="nav-about">عن الأكاديمية</button>
+                <button onclick="navigateTo('programs')"
+                    class="nav-link px-3 py-2 rounded-md hover:text-emerald-700 hover:bg-emerald-50 transition"
+                    id="nav-programs">البرامج الأكاديمية</button>
+                <button onclick="navigateTo('admissions')"
+                    class="nav-link px-3 py-2 rounded-md hover:text-emerald-700 hover:bg-emerald-50 transition"
+                    id="nav-admissions">القبول والتسجيل</button>
+                <button onclick="navigateTo('elearning')"
+                    class="nav-link px-3 py-2 rounded-md hover:text-emerald-700 hover:bg-emerald-50 transition"
+                    id="nav-elearning">البيئة التعليمية</button>
+                <button onclick="navigateTo('students')"
+                    class="nav-link px-3 py-2 rounded-md hover:text-emerald-700 hover:bg-emerald-50 transition"
+                    id="nav-students">شؤون الطلاب</button>
+                <button onclick="navigateTo('media')"
+                    class="nav-link px-3 py-2 rounded-md hover:text-emerald-700 hover:bg-emerald-50 transition"
+                    id="nav-media">المركز الإعلامي</button>
+                <button onclick="navigateTo('contact')"
+                    class="nav-link px-3 py-2 rounded-md hover:text-emerald-700 hover:bg-emerald-50 transition"
+                    id="nav-contact">اتصل بنا</button>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-700 focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu"
+        class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-72 h-full p-5 flex flex-col space-y-4 shadow-xl transform translate-x-full transition-transform duration-300"
+            id="mobileDrawer">
+            <div class="flex justify-between items-center border-b pb-3">
+                <span class="brand-font font-bold text-emerald-800 text-lg">القائمة الرئيسية</span>
+                <button onclick="toggleMobileMenu()" class="text-gray-500"><i
+                        class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <nav class="flex flex-col space-y-2 font-medium">
+                <button onclick="navigateTo('home'); toggleMobileMenu();"
+                    class="text-right py-2.5 px-3 rounded hover:bg-emerald-50">الرئيسية</button>
+                <button onclick="navigateTo('about'); toggleMobileMenu();"
+                    class="text-right py-2.5 px-3 rounded hover:bg-emerald-50">عن الأكاديمية</button>
+                <button onclick="navigateTo('programs'); toggleMobileMenu();"
+                    class="text-right py-2.5 px-3 rounded hover:bg-emerald-50">البرامج الأكاديمية</button>
+                <button onclick="navigateTo('admissions'); toggleMobileMenu();"
+                    class="text-right py-2.5 px-3 rounded hover:bg-emerald-50">القبول والتسجيل</button>
+                <button onclick="navigateTo('elearning'); toggleMobileMenu();"
+                    class="text-right py-2.5 px-3 rounded hover:bg-emerald-50">البيئة التعليمية</button>
+                <button onclick="navigateTo('students'); toggleMobileMenu();"
+                    class="text-right py-2.5 px-3 rounded hover:bg-emerald-50">شؤون الطلاب</button>
+                <button onclick="navigateTo('media'); toggleMobileMenu();"
+                    class="text-right py-2.5 px-3 rounded hover:bg-emerald-50">المركز الإعلامي</button>
+                <button onclick="navigateTo('contact'); toggleMobileMenu();"
+                    class="text-right py-2.5 px-3 rounded hover:bg-emerald-50">اتصل بنا</button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content Area Container -->
+    <main class="flex-grow pt-4">
+
+        <!-- 1. HOME PAGE SECTION -->
+        <section id="home" class="page-section active">
+            <!-- Hero Banner with Background Image Overlay -->
+            <div class="relative bg-emerald-900 text-white py-24 px-4 text-center overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1200"
+                    alt="Islamic Architecture Background"
+                    class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay">
+                <div class="container mx-auto max-w-3xl relative z-10">
+                    <h2 class="brand-font text-4xl md:text-5xl font-bold mb-6 leading-snug">منارة العلم الشرعي في
+                        بيتك</h2>
+                    <p class="text-sm md:text-base text-emerald-100 mb-8 max-w-xl mx-auto leading-relaxed">انضم إلى آلاف
+                        الطلاب حول العالم وادرس الشريعة وأصول الدين عن بُعد بأعلى المعايير الأكاديمية.</p>
+                    <div class="flex flex-wrap justify-center gap-4 font-bold text-sm">
+                        <button onclick="navigateTo('admissions')"
+                            class="bg-amber-500 hover:bg-amber-600 text-neutral-900 px-8 py-3 rounded-lg transition shadow-md">قدّم
+                            الآن</button>
+                        <button onclick="navigateTo('programs')"
+                            class="bg-transparent border-2 border-white hover:bg-white hover:text-emerald-900 px-8 py-3 rounded-lg transition">استكشف
+                            البرامج</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Quick About with side Image -->
+            <div class="container mx-auto px-4 py-16 max-w-5xl">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center md:text-right">
+                        <div class="inline-block bg-emerald-50 text-emerald-800 p-3 rounded-full mb-4">
+                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <h3 class="brand-font text-2xl font-bold mb-4 text-gray-800">مرحباً بكم في الأكاديمية</h3>
+                        <p class="text-base text-gray-600 leading-relaxed">أكاديمية عليكم بسنتي الجامعية تهدف لتيسير
+                            العلوم الإسلامية والعربية للجميع، عبر بيئة رقمية مرنة وتفاعلية.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -inset-2 bg-amber-500 rounded-2xl blur opacity-20"></div>
+                        <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&q=80&w=600"
+                            alt="Studying Books" class="relative rounded-2xl shadow-md w-full object-cover h-64">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 2. ABOUT US SECTION -->
+        <section id="about" class="page-section container mx-auto px-4 py-12 max-w-5xl">
+            <h2
+                class="brand-font text-3xl font-bold text-center text-emerald-800 mb-12 border-b-2 border-emerald-100 pb-4">
+                التعريف بالأكاديمية</h2>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="text-amber-500 mb-3"><i class="fa-solid fa-eye text-2xl"></i></div>
+                    <h3 class="brand-font text-xl font-bold mb-2 text-emerald-900">رؤيتنا</h3>
+                    <p class="text-gray-600 text-sm md:text-base leading-relaxed">الريادة العالمية في التعليم الإسلامي
+                        الرقمي.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="text-emerald-600 mb-3"><i class="fa-solid fa-bullseye text-2xl"></i></div>
+                    <h3 class="brand-font text-xl font-bold mb-2 text-emerald-900">رسالتنا</h3>
+                    <p class="text-gray-600 text-sm md:text-base leading-relaxed">نشر قيم الوسطية وتأصيل المعرفة الشرعية
+                        باستخدام أحدث تقنيات التعلم الافتراضي.</p>
+                </div>
+            </div>
+
+            <!-- Principal Word with Image Portrait style -->
+            <div class="bg-emerald-50 rounded-2xl p-8 mb-12 border border-emerald-100">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150"
+                        alt="University Dean Portrait Placeholder"
+                        class="w-24 h-24 rounded-full object-cover border-4 border-emerald-700 shadow-md">
+                    <div class="text-center md:text-right">
+                        <h3 class="brand-font text-xl font-bold mb-3 text-emerald-900">كلمة رئيس الجامعة</h3>
+                        <p class="text-gray-700 italic leading-relaxed text-base md:text-lg">"أبنائي الطلبة، نرحب بكم في
+                            صرحكم العلمي الذي يكسر حواجز المكان، لنحمل سوياً أمانة العلم الشرعي ونشر سماحة
+                            الإسلام."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border p-6 text-center max-w-2xl mx-auto">
+                <div class="text-emerald-600 text-3xl mb-3"><i class="fa-solid fa-award"></i></div>
+                <h3 class="brand-font text-lg font-bold text-gray-800 mb-2">الاعتمادات</h3>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed">الجامعة مرخصة ومعتمدة من وزارة التعليم
+                    العالي وتخضع شهاداتها لمعايير الجودة الأكاديمية الدولية.</p>
+            </div>
+        </section>
+
+
+        <!-- 3. ACADEMIC PROGRAMS SECTION -->
+        <section id="programs" class="page-section container mx-auto px-4 py-12 max-w-6xl">
+            <h2
+                class="brand-font text-3xl font-bold text-center text-emerald-800 mb-12 border-b-2 border-emerald-100 pb-4">
+                البرامج الأكاديمية</h2>
+
+            <!-- Sharia College -->
+            <div class="mb-12">
+                <div class="bg-gradient-to-r from-emerald-800 to-emerald-700 text-white p-6 rounded-t-xl">
+                    <h3 class="brand-font text-2xl font-bold flex items-center"><i
+                            class="fa-solid fa-gavel ml-3"></i>كلية الشريعة</h3>
+                </div>
+                <div class="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-gray-100">
+                    <h4 class="brand-font text-xl font-bold text-emerald-900 mb-3">برنامج البكالوريوس في الشريعة
+                        الإسلامية</h4>
+                    <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-6 text-justify">
+                        ينقسم برنامج البكالوريوس في الشريعة الإسلامية ينقسم إلى السنتين الأوليين التان تؤهلان الطالب
+                        لاستنباط الأحكام الشرعية والقدرة على إعداد والتعامل مع الدراسات العلمية. ثم ينتقل الطلاب إلى
+                        السنتين الأخريين على المسارات الدراسية ٤ الخاصة بناءعلى نتائجهم المسبقة وأنشطتهم العلمية
+                        الدالتان على رغباتهم العلمية وقدراتهم الشخصية. والمسارات ٤ هي:
+                    </p>
+
+                    <h5 class="font-bold text-gray-800 mb-4 flex items-center text-sm md:text-base"><i
+                            class="fa-solid fa-diagram-project ml-2 text-emerald-600"></i>المسارات الأربعة المتاحة:</h5>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div
+                            class="p-4 bg-gray-50 border-r-4 border-emerald-600 rounded-l shadow-sm flex items-center gap-3">
+                            <i class="fa-solid fa-kaaba text-emerald-700 text-base"></i>
+                            <span class="font-bold text-emerald-900 text-xs md:text-sm">العقيدة الإسلامية والمذاهب
+                                الفكرية</span>
+                        </div>
+                        <div
+                            class="p-4 bg-gray-50 border-r-4 border-emerald-600 rounded-l shadow-sm flex items-center gap-3">
+                            <i class="fa-solid fa-scale-balanced text-emerald-700 text-base"></i>
+                            <span class="font-bold text-emerald-900 text-xs md:text-sm">الفقه الإسلامي وأصوله[cite:
+                                1]</span>
+                        </div>
+                        <div
+                            class="p-4 bg-gray-50 border-r-4 border-emerald-600 rounded-l shadow-sm flex items-center gap-3">
+                            <i class="fa-solid fa-lines-leaning text-emerald-700 text-base"></i>
+                            <span class="font-bold text-emerald-900 text-xs md:text-sm">علوم الحديث وفقه السنة
+                                النبوية</span>
+                        </div>
+                        <div
+                            class="p-4 bg-gray-50 border-r-4 border-emerald-600 rounded-l shadow-sm flex items-center gap-3">
+                            <i class="fa-solid fa-pen-nib text-emerald-700 text-base"></i>
+                            <span class="font-bold text-emerald-900 text-xs md:text-sm">اللغة العربية وآدابها[cite:
+                                1]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Institutes -->
+            <div>
+                <div class="bg-gradient-to-r from-amber-600 to-amber-500 text-white p-6 rounded-t-xl">
+                    <h3 class="brand-font text-2xl font-bold flex items-center"><i
+                            class="fa-solid fa-landmark ml-3"></i>المعاهد العلمية</h3>
+                </div>
+                <div class="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-gray-100 space-y-8">
+
+                    <!-- Language Institute -->
+                    <div>
+                        <h4 class="brand-font text-lg font-bold text-emerald-800 border-b pb-2 mb-4"><i
+                                class="fa-solid fa-language ml-2"></i>معهد اللغة العربية للناطقين بغيرها:</h4>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="p-5 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <h5 class="font-bold text-gray-800 text-sm md:text-base mb-2">معهد الإعداد اللغوي: دبلوم
+                                    اللغة العربية (سنة واحدة)</h5>
+                                <p class="text-xs md:text-sm text-gray-600 leading-relaxed">بناء الكفاءة اللغوية التي
+                                    تؤهل الطالب للتواصل الاجتماعي باللغة العربية مما يعينه على معرفة الأساسيات الدينية.
+                                    ويعتبر مستوى تعليميا مساندا لمن يرغب في الالتحاق بالمرحلة الجامعية في
+                                    الأكاديمية.</p>
+                            </div>
+                            <div class="p-5 bg-amber-50/50 rounded-xl border border-amber-100">
+                                <h5 class="font-bold text-gray-800 text-sm md:text-base mb-2">معهد السنة التحضيرية:
+                                    دبلوم مرتفع في الدراسات الإسلامية (سنة واحدة)</h5>
+                                <p class="text-xs md:text-sm text-gray-600 leading-relaxed">بناء الكفاءة التعليمية
+                                    المضاهية للشهادة الثانوية العامة التي تؤهل الطالب للقبول في المرحلة الجامعية مباشرة
+                                    لمن يرغب في الالتحاق بالمرحلة الجامعية في الأكاديمية.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Revelation Institute -->
+                    <div>
+                        <h4 class="brand-font text-lg font-bold text-emerald-800 border-b pb-2 mb-4"><i
+                                class="fa-solid fa-scroll ml-2"></i>معهد خدمة الوحيين</h4>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="p-5 bg-emerald-50/30 rounded-xl border border-gray-100">
+                                <h5 class="font-bold text-gray-800 text-sm md:text-base mb-2">معهد حفظ القرآن
+                                    الكريم:</h5>
+                                <p class="text-xs text-gray-600 leading-relaxed">حفظ القرآن الكريم ودراسة علم التجويد
+                                    نظريا وتطبيقيا، مع دراسة متون علمية في تجويد القرآن والعلوم المتعلقة بها.
+                                </p>
+                            </div>
+                            <div class="p-5 bg-emerald-50/30 rounded-xl border border-gray-100">
+                                <h5 class="font-bold text-gray-800 text-sm md:text-base mb-2">معهد الإقراء والإجازة:
+                                    دبلوم القراءات السبع (سنة واحدة)</h5>
+                                <p class="text-xs text-gray-600 leading-relaxed">حفظ وإتقان الترتيل مع إجازة الإقراء
+                                    لقراءة بروايتيها بالسند المتصل للنبي ﷺ مع دراسة متون علمية في القراءات والعلوم
+                                    المتعلقة بها.</p>
+                            </div>
+                            <div class="p-5 bg-emerald-50/30 rounded-xl border border-gray-100">
+                                <h5 class="font-bold text-gray-800 text-sm md:text-base mb-2">معهد السنة النبوية: دبلوم
+                                    في فقه السنة النبوية (سنة واحدة)</h5>
+                                <p class="text-xs text-gray-600 leading-relaxed">حفظ متن حديثي (عمدة الأحكام، بلوغ
+                                    المرام) مع دراسة متون علمية حديثية مهمة والعلوم المتعلقة بها.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 4. ADMISSIONS SECTION -->
+        <section id="admissions" class="page-section container mx-auto px-4 py-12 max-w-5xl">
+            <h2
+                class="brand-font text-3xl font-bold text-center text-emerald-800 mb-12 border-b-2 border-emerald-100 pb-4">
+                القبول والتسجيل</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Admission Requirements -->
+                <div class="bg-white rounded-xl shadow-sm border p-6 md:col-span-2">
+                    <h3 class="brand-font text-xl font-bold text-emerald-900 mb-4 flex items-center"><i
+                            class="fa-solid fa-clipboard-list ml-2"></i>شروط القبول:</h3>
+                    <ul class="space-y-3 text-gray-600 text-sm md:text-base">
+                        <li class="flex items-start"><i
+                                class="fa-solid fa-circle-check text-emerald-600 mt-1 ml-2 text-xs"></i><span>1. اجتياز
+                                اختبارات القبول والمقابلة الشخصية في العقيدة الإسلامية والفقه الإسلامي ومصطلح الحديث
+                                والأصول واللغة العربية.</span></li>
+                        <li class="flex items-start"><i
+                                class="fa-solid fa-circle-check text-emerald-600 mt-1 ml-2 text-xs"></i><span>سيرة حسنة
+                                وتزكية علمية.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Tuition Card with Styled Graphic elements -->
+                <div
+                    class="relative bg-emerald-800 text-white rounded-xl shadow-md p-6 flex flex-col justify-between overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=300"
+                        alt="Finance/Tuition Background"
+                        class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-overlay">
+                    <div class="relative z-10">
+                        <h3 class="brand-font text-xl font-bold mb-2 flex items-center"><i
+                                class="fa-solid fa-credit-card ml-2"></i>الرسوم الدراسية:</h3>
+                        <div class="text-3xl font-extrabold my-4 text-amber-400">١٥٠ دولار <span
+                                class="text-xs font-normal text-emerald-100">/ تشمل المقررات والاختبارات</span>
+                        </div>
+                        <p class="text-xs text-emerald-100 leading-relaxed">تتوفر خيارات الدفع عبر الفيزا، الماستر كارد،
+                            أو التحويل البنكي</p>
+                    </div>
+                    <div
+                        class="relative z-10 border-t border-emerald-700 pt-4 mt-4 flex justify-between items-center text-xl text-emerald-200">
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scholarships -->
+            <div
+                class="bg-amber-50 border border-amber-200 rounded-xl p-6 mt-8 flex items-center space-x-reverse space-x-4">
+                <div class="text-amber-600 text-3xl"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                <div>
+                    <h4 class="brand-font font-bold text-amber-900 mb-1">المنح الدراسية:</h4>
+                    <p class="text-gray-700 text-xs md:text-sm">تقدم الجامعة منحاً جزئية لطلاب الدول النامية وحفظة
+                        القرآن الكريم وفق شروط التميز الأكاديمي.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 5. E-LEARNING PORTAL SECTION -->
+        <section id="elearning" class="page-section container mx-auto px-4 py-12 max-w-4xl">
+            <h2
+                class="brand-font text-3xl font-bold text-center text-emerald-800 mb-12 border-b-2 border-emerald-100 pb-4">
+                بيئة التعلم عن بُعد (E-Learning Portal)</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Login Mockup Portal -->
+                <div class="bg-white rounded-xl shadow-md border p-6 md:col-span-2">
+                    <h3 class="brand-font text-xl font-bold text-gray-800 mb-2">منصة الدراسة (LMS):</h3>
+                    <p class="text-gray-500 text-xs md:text-sm mb-6">مرحباً بك في صفك الافتراضي. سجل دخولك هنا لمتابعة
+                        محاضراتك، حل التكليفات، ومناقشة أساتذتك</p>
+                    <form onsubmit="event.preventDefault(); alert('هذه واجهة تجريبية للمشروع المبدئي (MVP)');"
+                        class="space-y-4 text-sm">
+                        <div>
+                            <label class="block font-medium text-gray-700 mb-1">البريد الإلكتروني الجامعي</label>
+                            <input type="email" placeholder="student@islamic-univ.edu"
+                                class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-gray-50">
+                        </div>
+                        <div>
+                            <label class="block font-medium text-gray-700 mb-1">كلمة المرور</label>
+                            <input type="password" placeholder="••••••••"
+                                class="w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-gray-50">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 rounded-lg transition text-base">تسجيل
+                            الدخول</button>
+                    </form>
+                </div>
+
+                <!-- Digital Library & Support -->
+                <div class="space-y-6">
+                    <div class="bg-gray-100 border rounded-xl p-5 text-center relative overflow-hidden">
+                        <div class="text-gray-400 text-4xl mb-2"><i class="fa-solid fa-book-bookmark"></i></div>
+                        <h4 class="brand-font font-bold text-gray-700">مكتبة الجامعة الرقمية:</h4>
+                        <span
+                            class="inline-block bg-amber-100 text-amber-800 px-3 py-1 rounded text-xs font-bold mt-3">تحت
+                            الإنشاء</span>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-5 shadow-sm">
+                        <h4 class="brand-font font-bold text-red-800 flex items-center mb-2"><i
+                                class="fa-solid fa-headset ml-2"></i>الدعم التقني:</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">تواجه مشكلة في الصوت أو الدخول؟ فريق الدعم
+                            الفني معك على مدار الساعة.</p>
+                        <button onclick="alert('سيتم فتح نظام التذاكر قريباً')"
+                            class="w-full bg-gray-800 hover:bg-gray-900 text-white text-xs py-2 rounded font-semibold transition">افتح
+                            تذكرة مساعدة الآن.</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 6. STUDENT AFFAIRS SECTION -->
+        <section id="students" class="page-section container mx-auto px-4 py-12 max-w-5xl">
+            <h2
+                class="brand-font text-3xl font-bold text-center text-emerald-800 mb-12 border-b-2 border-emerald-100 pb-4">
+                شؤون الطلاب (Student Affairs)</h2>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <!-- Academic Calendar -->
+                <div class="bg-white rounded-xl shadow-sm border p-6">
+                    <h3 class="brand-font text-xl font-bold text-emerald-900 mb-4 flex items-center"><i
+                            class="fa-solid fa-calendar-days ml-2"></i>التقويم الأكاديمي:</h3>
+                    <div class="space-y-4 text-sm md:text-base">
+                        <div class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">بداية الدراسة:</span>
+                            <span class="font-bold text-emerald-700">1 ربيع الأول</span>
+                        </div>
+                        <div class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">اختبارات منتصف الفصل:</span>
+                            <span class="font-bold text-amber-600">15 ربيع الآخر</span>
+                        </div>
+                        <div class="flex justify-between pb-2">
+                            <span class="text-gray-600">الاختبارات النهائية:</span>
+                            <span class="font-bold text-red-600">20 جمادى الأولى.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Services Portal Form -->
+                <div class="bg-white rounded-xl shadow-sm border p-6">
+                    <h3 class="brand-font text-xl font-bold text-emerald-900 mb-2 flex items-center"><i
+                            class="fa-solid fa-file-invoice ml-2"></i>الخدمات الطلابية:</h3>
+                    <p class="text-xs text-gray-500 mb-4">طلب كشف درجات، إفادة قيد، أو تأجيل فصل دراسي؟ قدم طلبك
+                        الإلكتروني هنا وسيصلك الرد خلال 48 ساعة.</p>
+                    <div class="space-y-3">
+                        <select
+                            class="w-full p-2 border rounded-lg text-xs md:text-sm bg-gray-50 focus:outline-emerald-600">
+                            <option>اختر نوع الخدمة المطلوب...</option>
+                            <option>طلب كشف درجات</option>
+                            <option>إفادة قيد</option>
+                            <option>تأجيل فصل دراسي</option>
+                        </select>
+                        <input type="text" placeholder="الرقم الجامعي للطلب"
+                            class="w-full p-2 border rounded-lg text-xs md:text-sm focus:outline-emerald-600 bg-gray-50">
+                        <button onclick="alert('تم إرسال طلبك الافتراضي بنجاح وسيتم الرد خلال 48 ساعة.')"
+                            class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs md:text-sm py-2 rounded font-bold transition">إرسال
+                            الطلب</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code of Conduct -->
+            <div class="bg-gray-800 text-gray-100 rounded-xl p-6">
+                <h3 class="brand-font text-lg font-bold text-amber-400 mb-2 flex items-center"><i
+                        class="fa-solid fa-scale-balanced ml-2"></i>وثيقة السلوك:</h3>
+                <p class="italic text-gray-300 leading-relaxed text-sm md:text-base">"يلتزم طالب العلم بالأدب الشرعي في
+                    الحوار، والنزاهة الأكاديمية في الامتحانات، وتمثيل الإسلام بصورة مشرفة."</p>
+            </div>
+        </section>
+
+
+        <!-- 7. MEDIA CENTER SECTION -->
+        <section id="media" class="page-section container mx-auto px-4 py-12 max-w-5xl">
+            <h2
+                class="brand-font text-3xl font-bold text-center text-emerald-800 mb-12 border-b-2 border-emerald-100 pb-4">
+                المركز الإعلامي (Media Center)</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- News Feed with Cover Thumbnail -->
+                <div class="space-y-4">
+                    <h3 class="brand-font text-xl font-bold text-gray-800 flex items-center mb-2"><i
+                            class="fa-solid fa-newspaper ml-2 text-emerald-600"></i>آخر الأخبار:</h3>
+                    <div class="bg-white rounded-xl border shadow-sm overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1444840535719-195841cb6e2b?auto=format&fit=crop&q=80&w=500&h=200"
+                            alt="Scientific Seminar Banner Placeholder" class="w-full h-40 object-cover">
+                        <div class="p-5">
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">ملتقى
+                                علمي</span>
+                            <h4 class="brand-font font-bold text-emerald-950 mt-2 mb-3 text-base md:text-lg">الجامعة
+                                تطلق الملتقى العلمي الثالث</h4>
+                            <p class="text-gray-600 text-xs md:text-sm leading-relaxed mb-4">بعنوان نحو تقرير السنة
+                                النبوية في نيجيريا من ٣٠/٧/٢٠٢٦ إلى ٢/٨/٢٠٢٦.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Articles with Cover Thumbnail -->
+                <div class="space-y-4">
+                    <h3 class="brand-font text-xl font-bold text-gray-800 flex items-center mb-2"><i
+                            class="fa-solid fa-feather-pointed ml-2 text-emerald-600"></i>مقالات علمية:</h3>
+                    <div class="bg-white rounded-xl border shadow-sm overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=500&h=200"
+                            alt="Tech and Learning Concept Placement" class="w-full h-40 object-cover">
+                        <div class="p-5">
+                            <span
+                                class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">جديدنا[cite:
+                                1]</span>
+                            <h4 class="brand-font font-bold text-emerald-950 mt-2 mb-1 text-base md:text-lg">مقال 'أثر
+                                التقنية في تيسير طلب العلم الشرعي'</h4>
+                            <p class="text-xs text-gray-500 mb-3">لفضيلة الدكتور عميد كلية الشريعة.</p>
+                            <a href="#" onclick="event.preventDefault(); alert('سيتم إتاحة قراءة المقال كاملاً قريباً')"
+                                class="text-xs md:text-sm text-emerald-700 font-bold hover:underline">اقرأ المقال كاملاً
+                                <i class="fa-solid fa-arrow-left mr-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 8. CONTACT US SECTION -->
+        <section id="contact" class="page-section container mx-auto px-4 py-12 max-w-5xl">
+            <h2
+                class="brand-font text-3xl font-bold text-center text-emerald-800 mb-12 border-b-2 border-emerald-100 pb-4">
+                اتصل بنا (Contact Us)</h2>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Info cards -->
+                <div class="bg-white p-6 rounded-xl border text-center shadow-sm">
+                    <div class="text-emerald-700 text-2xl mb-2"><i class="fa-solid fa-envelope"></i></div>
+                    <h3 class="brand-font font-bold text-gray-800 mb-1">البريد الإلكتروني</h3>
+                    <p class="text-xs md:text-sm text-gray-600 select-all font-medium">info@islamic-univ.edu
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border text-center shadow-sm">
+                    <div class="text-emerald-700 text-2xl mb-2"><i class="fa-solid fa-phone-volume"></i></div>
+                    <h3 class="brand-font font-bold text-gray-800 mb-1">هاتف / واتساب</h3>
+                    <p class="text-xs md:text-sm text-gray-600 dir-ltr select-all font-medium">00966123456789
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border text-center shadow-sm">
+                    <div class="text-emerald-700 text-2xl mb-2"><i class="fa-solid fa-clock"></i></div>
+                    <h3 class="brand-font font-bold text-gray-800 mb-1">أوقات العمل</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed font-medium">من الأحد للخميس (8ص - 4م بتوقيت
+                        مكة).</p>
+                </div>
+            </div>
+
+            <!-- FAQ Accordion Container -->
+            <div class="max-w-3xl mx-auto bg-white rounded-xl border shadow-sm p-6">
+                <h3 class="brand-font text-xl font-bold text-gray-800 mb-6 flex items-center"><i
+                        class="fa-solid fa-circle-question ml-2 text-emerald-600"></i>الأسئلة الشائعة:</h3>
+                <div class="border rounded-lg overflow-hidden">
+                    <button onclick="toggleAccordion('faq1')"
+                        class="w-full bg-gray-50 text-right p-4 font-bold text-emerald-950 flex justify-between items-center focus:outline-none text-sm md:text-base">
+                        <span>س: هل المحاضرات مباشرة أم مسجلة؟</span>
+                        <i id="faq1-icon" class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div id="faq1"
+                        class="hidden p-4 border-t bg-white text-gray-600 text-xs md:text-sm leading-relaxed">
+                        ج: نعتمد النظامين؛ بث مباشر للتفاعل، وتسجيل كامل للرجوع إليه في أي وقت.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 text-center py-6 border-t border-gray-800 mt-12 text-xs md:text-sm">
+        <div class="container mx-auto px-4">
+            <p class="mb-2">جميع الحقوق محفوظة &copy; 2026 لأكاديمية عليكم بسنتي الجامعية.</p>
+            <p class="text-xs text-gray-600">تصميم وتنفيذ الواجهة البرمجية المبدئية لحقيبة معايير التعلم الرقمي
+                الافتراضي.</p>
+        </div>
+    </footer>
+
+    <!-- Single Page SPA JavaScript Architecture -->
+    <script>
+        // Tab router system switcher logic
+        function navigateTo(sectionId) {
+            // 1. Hide all page-sections structures
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 2. Active target container view template 
+            const target = document.getElementById(sectionId);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // 3. Highlight Header Tab UI Links State tracking 
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.classList.remove('text-emerald-700', 'bg-emerald-50', 'font-bold');
+            });
+
+            const activeLink = document.getElementById(`nav-${sectionId}`);
+            if (activeLink) {
+                activeLink.classList.add('text-emerald-700', 'bg-emerald-50', 'font-bold');
+            }
+
+            // Scroll safely to window top smooth 
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Drawer dynamic mobile menu viewport animations
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const drawer = document.getElementById('mobileDrawer');
+
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => {
+                    menu.classList.remove('opacity-0');
+                    drawer.classList.remove('translate-x-full');
+                }, 10);
+            } else {
+                menu.classList.add('opacity-0');
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Frequently asked questions dropdown helper toggle
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(`${id}-icon`);
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Initialize state highlighting on direct default load
+        document.addEventListener("DOMContentLoaded", function () {
+            navigateTo('home');
+        });
+    </script>
+</body>
+
+</html>
