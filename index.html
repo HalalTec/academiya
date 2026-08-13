@@ -73,49 +73,97 @@
                 </div>
             </div>
         </div>
-
-        <div id="mobileMenu" class="fixed inset-0 z-50 hidden bg-slate-950/50 opacity-0 transition-opacity duration-300 lg:hidden"
-             onclick="handleMobileBackdropClick(event)">
-            <div id="mobileDrawer"
-                 class="fixed inset-y-0 end-0 w-full max-w-xs translate-x-full overflow-y-auto bg-white p-6 shadow-2xl transition-transform duration-300"
-                 role="dialog" aria-modal="true">
-                <div class="mb-5 flex items-center justify-between border-b pb-4">
-                    <h2 class="font-bold text-emerald-950" data-i18n="menu_title"></h2>
-                    <button type="button" onclick="closeMobileMenu()" class="rounded-md p-2 text-slate-500 hover:bg-slate-100">
-                        <i class="fa-solid fa-xmark text-xl"></i>
-                    </button>
-                </div>
-
-                <div class="flex flex-col gap-1 text-sm font-semibold text-slate-700">
-                    <button onclick="mobileNavigate('home')" class="rounded-md px-3 py-3 text-start hover:bg-emerald-50" data-i18n="nav_home"></button>
-                    <button onclick="mobileNavigate('about')" class="rounded-md px-3 py-3 text-start hover:bg-emerald-50" data-i18n="nav_about"></button>
-                    <button onclick="mobileNavigate('programs')" class="rounded-md px-3 py-3 text-start hover:bg-emerald-50" data-i18n="nav_programs"></button>
-                    <button onclick="mobileNavigate('admissions')" class="rounded-md px-3 py-3 text-start hover:bg-emerald-50" data-i18n="nav_admissions"></button>
-                    <button onclick="mobileNavigate('elearning')" class="rounded-md px-3 py-3 text-start hover:bg-emerald-50" data-i18n="nav_elearning"></button>
-                    <button onclick="mobileNavigate('students')" class="rounded-md px-3 py-3 text-start hover:bg-emerald-50" data-i18n="nav_students"></button>
-                    <button onclick="mobileNavigate('media')" class="rounded-md px-3 py-3 text-start hover:bg-emerald-50" data-i18n="nav_media"></button>
-                    <button onclick="mobileNavigate('contact')" class="rounded-md px-3 py-3 text-start hover:bg-emerald-50" data-i18n="nav_contact"></button>
-                </div>
-
-                <div class="mt-6 border-t pt-6">
-                    <label for="langSelectMobile" class="mb-2 block text-xs font-bold text-slate-600" data-i18n="language_label"></label>
-                    <select id="langSelectMobile" onchange="switchLanguage(this.value); closeMobileMenu()"
-                        class="w-full rounded-lg border border-slate-300 bg-slate-100 p-2 text-xs font-bold text-slate-700">
-                        <option value="ar">العربية</option>
-                        <option value="en">English</option>
-                        <option value="fr">Français</option>
-                    </select>
-                </div>
-
-                <a href="https://forms.gle/MEi6PHt4psveVzuE9" target="_blank" rel="noopener noreferrer"
-                   class="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-3 text-sm font-extrabold text-emerald-950 transition hover:bg-amber-400">
-                    <span data-i18n="btn_apply"></span>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                </a>
-            </div>
-        </div>
     </header>
+<!-- MOBILE MENU -->
+<div id="mobileMenu"
+    class="fixed inset-0 z-[9999] hidden bg-slate-950/60 opacity-0 transition-opacity duration-300 lg:hidden"
+    onclick="handleMobileBackdropClick(event)">
+    <div id="mobileDrawer"
+        class="fixed right-0 top-0 flex h-[100dvh] w-[85%] max-w-xs translate-x-full flex-col bg-white shadow-2xl transition-transform duration-300"
+        role="dialog" aria-modal="true">
 
+        <!-- MENU HEADER -->
+        <div class="flex shrink-0 items-center justify-between border-b border-slate-200 px-5 py-4">
+            <h2 class="font-bold text-emerald-950" data-i18n="menu_title"></h2>
+
+            <button type="button" onclick="closeMobileMenu()"
+                class="flex h-9 w-9 items-center justify-center rounded-md text-slate-500 hover:bg-slate-100"
+                aria-label="Close menu">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+
+        <!-- NAVIGATION -->
+        <div class="flex min-h-0 flex-1 flex-col px-4 py-3">
+
+            <nav class="flex flex-col gap-0.5 text-sm font-semibold text-slate-700">
+
+                <button onclick="mobileNavigate('home')"
+                    class="rounded-md px-3 py-2.5 text-start hover:bg-emerald-50 hover:text-emerald-800"
+                    data-i18n="nav_home"></button>
+
+                <button onclick="mobileNavigate('about')"
+                    class="rounded-md px-3 py-2.5 text-start hover:bg-emerald-50 hover:text-emerald-800"
+                    data-i18n="nav_about"></button>
+
+                <button onclick="mobileNavigate('programs')"
+                    class="rounded-md px-3 py-2.5 text-start hover:bg-emerald-50 hover:text-emerald-800"
+                    data-i18n="nav_programs"></button>
+
+                <button onclick="mobileNavigate('admissions')"
+                    class="rounded-md px-3 py-2.5 text-start hover:bg-emerald-50 hover:text-emerald-800"
+                    data-i18n="nav_admissions"></button>
+
+                <button onclick="mobileNavigate('elearning')"
+                    class="rounded-md px-3 py-2.5 text-start hover:bg-emerald-50 hover:text-emerald-800"
+                    data-i18n="nav_elearning"></button>
+
+                <button onclick="mobileNavigate('students')"
+                    class="rounded-md px-3 py-2.5 text-start hover:bg-emerald-50 hover:text-emerald-800"
+                    data-i18n="nav_students"></button>
+
+                <button onclick="mobileNavigate('media')"
+                    class="rounded-md px-3 py-2.5 text-start hover:bg-emerald-50 hover:text-emerald-800"
+                    data-i18n="nav_media"></button>
+
+                <button onclick="mobileNavigate('contact')"
+                    class="rounded-md px-3 py-2.5 text-start hover:bg-emerald-50 hover:text-emerald-800"
+                    data-i18n="nav_contact"></button>
+
+            </nav>
+
+
+            <!-- LANGUAGE -->
+            <div class="mt-auto border-t border-slate-200 pt-4">
+
+                <label for="langSelectMobile" class="mb-2 block text-xs font-bold text-slate-600"
+                    data-i18n="language_label"></label>
+
+                <select id="langSelectMobile" onchange="switchLanguage(this.value); closeMobileMenu()"
+                    class="w-full rounded-lg border border-slate-300 bg-slate-100 px-3 py-2.5 text-xs font-bold text-slate-700">
+                    <option value="ar">العربية</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- APPLY BUTTON -->
+        <div class="shrink-0 border-t border-slate-200 bg-white px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4">
+            <a href="https://forms.gle/MEi6PHt4psveVzuE9" target="_blank" rel="noopener noreferrer"
+                class="flex w-full items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-3 text-sm font-extrabold text-emerald-950 transition hover:bg-amber-400">
+                <span data-i18n="btn_apply"></span>
+
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+        </div>
+
+    </div>
+</div>
     <main class="min-h-[60vh]">
 
         <!-- HOME -->
@@ -826,15 +874,9 @@ function switchLanguage(lang) {
     });
 
     const desktop = document.getElementById("langSelect");
-    const mobile = document.getElementById("langSelectMobile");
     if (desktop) desktop.value = lang;
     if (mobile) mobile.value = lang;
 
-    const drawer = document.getElementById("mobileDrawer");
-    if (drawer) {
-        drawer.classList.remove("translate-x-full", "-translate-x-full");
-        drawer.classList.add(t.dir === "rtl" ? "-translate-x-full" : "translate-x-full");
-    }
 }
 
 const validSections = ["home","about","programs","admissions","elearning","students","media","contact"];
@@ -860,49 +902,74 @@ function mobileNavigate(sectionId) {
     closeMobileMenu();
 }
 
-function toggleMobileMenu() {
-    const menu = document.getElementById("mobileMenu");
-    const drawer = document.getElementById("mobileDrawer");
-    const button = document.getElementById("mobileMenuButton");
-    const icon = document.getElementById("mobileMenuIcon");
-    const isClosed = menu.classList.contains("hidden");
-    const dir = document.documentElement.dir;
+    function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const drawer = document.getElementById("mobileDrawer");
+        const button = document.getElementById("mobileMenuButton");
+        const icon = document.getElementById("mobileMenuIcon");
 
-    if (isClosed) {
-        menu.classList.remove("hidden");
-        document.body.classList.add("menu-open");
-        button?.setAttribute("aria-expanded", "true");
-        icon?.classList.remove("fa-bars");
-        icon?.classList.add("fa-xmark");
+        if (!menu || !drawer) {
+            return;
+        }
 
-        requestAnimationFrame(() => {
-            menu.classList.remove("opacity-0");
-            drawer.classList.remove("translate-x-full", "-translate-x-full");
-        });
-    } else {
-        closeMobileMenu();
+        const isClosed = menu.classList.contains("hidden");
+
+        if (isClosed) {
+            // Display overlay first
+            menu.classList.remove("hidden");
+
+            document.body.classList.add("menu-open");
+
+            if (button) {
+                button.setAttribute("aria-expanded", "true");
+            }
+
+            if (icon) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
+            }
+
+            // Then animate overlay + drawer
+            requestAnimationFrame(() => {
+                menu.classList.remove("opacity-0");
+                drawer.classList.remove("translate-x-full");
+            });
+        } else {
+            closeMobileMenu();
+        }
     }
-}
 
-function closeMobileMenu() {
-    const menu = document.getElementById("mobileMenu");
-    const drawer = document.getElementById("mobileDrawer");
-    const button = document.getElementById("mobileMenuButton");
-    const icon = document.getElementById("mobileMenuIcon");
-    if (!menu || !drawer) return;
+    function closeMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const drawer = document.getElementById("mobileDrawer");
+        const button = document.getElementById("mobileMenuButton");
+        const icon = document.getElementById("mobileMenuIcon");
 
-    menu.classList.add("opacity-0");
-    const dir = document.documentElement.dir;
-    drawer.classList.remove("translate-x-full", "-translate-x-full");
-    drawer.classList.add(dir === "rtl" ? "-translate-x-full" : "translate-x-full");
+        if (!menu || !drawer) {
+            return;
+        }
 
-    document.body.classList.remove("menu-open");
-    button?.setAttribute("aria-expanded", "false");
-    icon?.classList.remove("fa-xmark");
-    icon?.classList.add("fa-bars");
+        // Fade overlay out
+        menu.classList.add("opacity-0");
 
-    setTimeout(() => menu.classList.add("hidden"), 300);
-}
+        // Move drawer off screen
+        drawer.classList.add("translate-x-full");
+
+        document.body.classList.remove("menu-open");
+
+        if (button) {
+            button.setAttribute("aria-expanded", "false");
+        }
+
+        if (icon) {
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+        }
+
+        setTimeout(() => {
+            menu.classList.add("hidden");
+        }, 300);
+    }
 
 function handleMobileBackdropClick(event) {
     if (event.target === document.getElementById("mobileMenu")) closeMobileMenu();
